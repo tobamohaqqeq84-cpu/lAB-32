@@ -24,7 +24,7 @@ int main(){
     if (lane.empty()){
         cout << "The queue is empty." << endl;
     } else {
-        for ( Car& c : lane){
+        for (int i = 0; i<(int)lane.size()++i){
             c.print();
         }
     }
@@ -40,7 +40,8 @@ int main(){
         if (roll < PAY_PROBABILITY){
             Car paying = lane.front(); // car at front pays
 
-        cout << "Time: " << timeStep << "operttion: Car paid: [" << paying.getYear() << " " << paying.getMake() << " (" << paying.getModel() << ")]" << endl; 
+        cout << "Time: " << timeStep << "operttion: Car paid: ";
+            lane.front().print();
              lane.pop_front();  
         } else{
             Car newCar;
@@ -52,7 +53,7 @@ int main(){
         if (lane.empty()){
             cout << "The queue is empty." << endl;
         }else{
-            for (const Car& c : lane){
+            for ( Car& c : lane){
                 c.print();
             }
         }

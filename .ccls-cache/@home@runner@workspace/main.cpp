@@ -14,6 +14,20 @@ int main(){
     const int PAY_PROBABILITY = 55;  //55% PAY
 
     srand(time(0));
+    deque <Car> lane;
+
+    for(int i=0; i< INITAL_CARS; ++i){
+        lane.push_back(Car());
+    }
+
+    cout << "Initial queue:" << endl;
+    if (lane.empty()){
+        cout << "The queue is empty." << endl;
+    } else {
+        for (const Car& c : lane){
+            c.print
+        }
+    }
     
 }
 

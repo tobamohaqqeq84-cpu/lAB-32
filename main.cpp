@@ -16,7 +16,7 @@ int main(){
     srand(time(0));
     deque <Car> lane;
 
-    for(int i=0; i< INITAL_CARS; ++i){
+    for(int i=0; i < INITAL_CARS; ++i){
         lane.push_back(Car());
     }
 
@@ -24,7 +24,7 @@ int main(){
     if (lane.empty()){
         cout << "The queue is empty." << endl;
     } else {
-        for (const Car& c : lane){
+        for ( Car& c : lane){
             c.print();
         }
     }
@@ -58,7 +58,6 @@ int main(){
         }
         cout << endl;
     }
-
-    cout << "This simulation ran " << timeStep << " Cycles until the queue was empty; your results "
+    return 0;
 }
 

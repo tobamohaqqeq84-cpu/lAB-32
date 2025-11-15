@@ -6,21 +6,23 @@
 #include <deque>
 #include <cstdlib>
 #include <ctime>
-#include "Car.h"
+#include "Car.h" // Include the Car class header file
 using namespace std;
 
 int main(){
-    const int INITIAL_CARS = 2;
-    const int PAY_PROBABILITY = 55;  //55% PAY
+    const int INITIAL_CARS = 2; //starts with 2 cars
+    const int PAY_PROBABILITY = 55;  //55% chance of paying
 
-    srand(time(0));
+    srand(time(0));  //makes rendom number
     
-    deque <Car> lane;
+    deque <Car> lane; //this is our toll booth line
 
+    //add the fist 2 cars to the line
     for(int i = 0; i < INITIAL_CARS; ++i){
-        lane.push_back(Car());
+        lane.push_back(Car()); //creates a new car and adds it to the back of the line
     }
 
+    //prints the starting line of cars
     cout << "Initial queue:" << endl;
     if (lane.empty()){
         cout << "Empty." << endl;
@@ -31,15 +33,17 @@ int main(){
     }
     cout << endl;
 
-    int timeStep = 0;
+    int timeStep = 0; //keeps track of time steps
 
     while (!lane.empty()){
-        ++timeStep;
+        ++timeStep; //moves to the next time step
 
         int roll = rand () % 100;
-        
+
+        //checks if the front car pays
         if (roll < PAY_PROBABILITY){
 
+            //car pays and leaves the line
         cout << "Time: " << timeStep << " operation: Car paid: ";
             lane.front().print();
              lane.pop_front();  
@@ -47,19 +51,21 @@ int main(){
             
             Car newCar;
 
+            //car does not pay and joins the back of the line
             cout << "Time: " << timeStep << " Operation: Joined Lane:  ";
              newCar.print();
              lane.push_back(newCar);
         }
+        //prints the current state of the line
         cout << "Queue:" << endl;
         if (lane.empty()){
             cout << "Empty." << endl;
         }else{
-            for ( Car& c : lane){
+            for ( Car& c : lane){ //prints each car in the line
                 c.print();
             }
         }
-        cout << endl;
+        cout << endl; 
     }
     return 0;
 }

@@ -14,18 +14,19 @@ int main(){
     const int PAY_PROBABILITY = 55;  //55% PAY
 
     srand(time(0));
+    
     deque <Car> lane;
 
-    for(int i=0; i < INITAL_CARS; ++i){
+    for(int i = 0; i < INITAL_CARS; ++i){
         lane.push_back(Car());
     }
 
     cout << "Initial queue:" << endl;
     if (lane.empty()){
-        cout << "The queue is empty." << endl;
+        cout << "Empty." << endl;
     } else {
-        for (int i = 0; i<(int)lane.size()++i){
-            c.print();
+        for (int i = 0; i < (int)lane.size(); ++i){
+            lane[i].print();
         }
     }
     cout << endl;
@@ -38,20 +39,21 @@ int main(){
         int roll = rand () % 100;
         
         if (roll < PAY_PROBABILITY){
-            Car paying = lane.front(); // car at front pays
 
         cout << "Time: " << timeStep << "operttion: Car paid: ";
             lane.front().print();
              lane.pop_front();  
         } else{
+            
             Car newCar;
 
-            cout << "Time: " << timeStep << " Operation: Joined Lane: [" << newCar.getYear() << " " << newCar.getMake() << " (" << newCar.getTransponder() << ")]" << endl;
+            cout << "Time: " << timeStep << " Operation: Joined Lane: ";
+            newCar.print();
              lane.push_back(newCar);
         }
         cout << "Queue:" << endl;
         if (lane.empty()){
-            cout << "The queue is empty." << endl;
+            cout << "Empty." << endl;
         }else{
             for ( Car& c : lane){
                 c.print();

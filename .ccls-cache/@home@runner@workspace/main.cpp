@@ -45,8 +45,20 @@ int main(){
         } else{
             Car newCar;
 
-            cout 
+            cout << "Time: " << timeStep << " Operation: Joined Lane: [" << newCar.getYear() << " " << newCar.getMake() << " (" << newCar.getTransponder() << ")]" << endl;
+             lane.push_back(newCar);
         }
+        cout << "Queue:" << endl;
+        if (lane.empty()){
+            cout << "The queue is empty." << endl;
+        }else{
+            for (const Car& c : lane){
+                c.print();
+            }
+        }
+        cout << endl;
     }
+
+    cout << "This simulation ran " << timeStep << " Cycles until the queue was empty; your results "
 }
 

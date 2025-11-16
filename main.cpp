@@ -12,10 +12,11 @@ using namespace std;
 int main(){
     const int INITIAL_CARS = 2; //starts with 2 cars
     const int PAY_PROBABILITY = 55;  //55% chance of paying
+    const int Num_lanes = 4;
 
     srand(time(0));  //makes rendom number
     
-    deque <Car> lane; //this is our toll booth line
+    deque<Car> lanes[Num_lanes];
 
     //add the fist 2 cars to the line
     for(int i = 0; i < INITIAL_CARS; ++i){

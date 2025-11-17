@@ -14,7 +14,7 @@ int main(){
     const int Num_lane = 4;
     const int MAX_TIME_STEPS = 20;
     
-    const int JOIN_PROB = 15;
+    const int JOIN_PROB = 39;
     const int PAY_PROB = 46;
     const int SWITCH_PROB = 15;
     const int EMPTY_JOIN_PROB = 50;
@@ -77,7 +77,7 @@ int main(){
                   newCar.print();
                   lanes[i].push_back(newCar);
               }
-              else{
+              else if (roll< PAY_PROB + JOIN_PROB + SWITCH_PROB){
                   Car switchingCar = lanes[i].back();
                   lanes[i].pop_back();
               
@@ -87,6 +87,7 @@ int main(){
                   }
                 cout << "Switched: ";
                 switchingCar.print();
+                    
                 lanes[newLane].push_back(switchingCar);
               
           }  
@@ -97,7 +98,7 @@ cout << endl;
 
 for (int i =0; i < Num_lane; ++i){
     if (lanes[i].empty()) {
-        cout << "Lane " << (i =  1)<< " Queue: Empty." << endl;}
+        cout << "Lane " << (i +  1)<< " Queue: Empty." << endl;}
  else{
         cout << "Lane " << (i + 1) << " Queue: " << endl;
         for (int k = 0; k < (int)lanes[i].size(); ++k){

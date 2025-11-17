@@ -11,13 +11,14 @@ using namespace std;
 
 int main(){
     const int INITIAL_CARS = 2; //starts with 2 cars
-    const int PAY_PROBABILITY = 55;  //55% chance of paying
     const int Num_lane = 4;
     const int MAX_TIME_STEPS = 20;
+    
     const int JOIN_PROB = 15;
     const int PAY_PROB = 46;
-
+    const int SWITCH_PROB = 15;
     const int EMPTY_JOIN_PROB = 50;
+    
     srand(time(0));  //makes rendom number
     
     deque<Car> lanes[Num_lane];
@@ -53,7 +54,7 @@ int main(){
         if (lanes[i].empty()){
             int rollEmpty = rand () % 100;
 
-            if (rollEmpty < JOIN_PROB){
+            if (rollEmpty < EMPTY_JOIN_PROB){
                 Car newCar;
                 cout << "Joined: ";
                 newCar.print();
@@ -76,7 +77,7 @@ int main(){
                   newCar.print();
                   lanes[i].push_back(newCar);
               }
-              else
+              else{
                   Car switchingCar = lanes[i].back();
                   lanes[i].pop_back();
               
@@ -97,7 +98,7 @@ cout << endl;
 for (int i =0; i < Num_lane; ++i){
     if (lanes[i].empty()) {
         cout << "Lane " << (i =  1)<< " Queue: Empty." << endl;}
-}  else{
+ else{
         cout << "Lane " << (i + 1) << " Queue: " << endl;
         for (int k = 0; k < (int)lanes[i].size(); ++k){
             cout << "   ";

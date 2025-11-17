@@ -15,6 +15,7 @@ int main(){
     const int Num_lane = 4;
     const int MAX_TIME_STEPS = 20;
     const int JOIN_PROB = 15;
+    const int PAY_PROB = 46;
 
     srand(time(0));  //makes rendom number
     
@@ -54,13 +55,52 @@ int main(){
                 newcomer.print();
                 lanes[i].push_back(newCar);
             } else {
-                cout
+                cout << "No action" << endl;
             }
             }
-            
+          else {
+              int roll = rand () % 100;
+              if (roll < PAY_PROB){
+                  cout << "Paid: ";
+                   lanes[i].front().print();
+                   lanes[i].pop_front();
+              }
+              else if (roll < PAY_PROB + JOIN_PROB){
+                  Car newCar;
+                  cout << "Joined: ";
+                  newCar.print();
+                  lanes[i].push_back(newCar);
+              }
+              else
+                  Car switchingCar = lanes[i].back();
+                  lanes[i].pop_back();
+                  int newLane = i;
+                  while (newLane == i){
+                      newLane = rand() % Num_lane;
+                  }
+                cout << "Switched: ";
+                switchingCar.print();
+                lanes[newLane].push_back(switchingCar);
+              
+          }  
         }
         
     }
+cout << endl;
+
+for (int i =0; i < Num_lane; ++i){
+    if (lanes[i].empty()) {
+        cout << "Lane " << (i =  1)<< " Queue: Empty." << endl;}
+    else{
+        cout << "Lane " << (i + 1) << " Queue: " << endl;
+        for (int k = 0; k < (int)lanes[i].size(); ++k){
+            cout << "   ";
+            lanes[i][k].print();
+        }
+    }
+    }
+    
+}
     if (lane.empty()){
         cout << "Empty." << endl;
     } else {

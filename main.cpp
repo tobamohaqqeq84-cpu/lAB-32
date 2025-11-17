@@ -17,6 +17,7 @@ int main(){
     const int JOIN_PROB = 15;
     const int PAY_PROB = 46;
 
+    const int EMPTY_JOIN_PROB = 50;
     srand(time(0));  //makes rendom number
     
     deque<Car> lanes[Num_lane];
@@ -39,20 +40,23 @@ int main(){
                 cout << "   ";
                 lanes[i][k].print();
             }
-    }}
+    }
+    }
     cout << endl;
 
-    for (int timeStep = 1; timeStep <= MAX_TIME_STEPS; ++timeStep)
+    for (int timeStep = 1; timeStep <= MAX_TIME_STEPS; ++timeStep){
         cout << "Time: " << timeStep << endl;
+        
     for (int i = 0; i < Num_lane; ++i){
         cout << "Lane " << (i + 1) << " ";
+        
         if (lanes[i].empty()){
             int rollEmpty = rand () % 100;
 
             if (rollEmpty < JOIN_PROB){
                 Car newCar;
                 cout << "Joined: ";
-                newcomer.print();
+                newCar.print();
                 lanes[i].push_back(newCar);
             } else {
                 cout << "No action" << endl;
@@ -60,6 +64,7 @@ int main(){
             }
           else {
               int roll = rand () % 100;
+              
               if (roll < PAY_PROB){
                   cout << "Paid: ";
                    lanes[i].front().print();
@@ -74,6 +79,7 @@ int main(){
               else
                   Car switchingCar = lanes[i].back();
                   lanes[i].pop_back();
+              
                   int newLane = i;
                   while (newLane == i){
                       newLane = rand() % Num_lane;
@@ -91,7 +97,7 @@ cout << endl;
 for (int i =0; i < Num_lane; ++i){
     if (lanes[i].empty()) {
         cout << "Lane " << (i =  1)<< " Queue: Empty." << endl;}
-    else{
+}  else{
         cout << "Lane " << (i + 1) << " Queue: " << endl;
         for (int k = 0; k < (int)lanes[i].size(); ++k){
             cout << "   ";
@@ -99,51 +105,7 @@ for (int i =0; i < Num_lane; ++i){
         }
     }
     }
-    
-}
-    if (lane.empty()){
-        cout << "Empty." << endl;
-    } else {
-       for(Car& c : lane){
-            c.print();
-        }
-    }
     cout << endl;
-
-    int timeStep = 0; //keeps track of time steps
-
-   for(int timeStep =1; timeStep <= 20; ++timeStep ){
-        
-
-        int roll = rand () % 100;
-
-        //checks if the front car pays
-        if (roll < PAY_PROBABILITY){
-
-            //car pays and leaves the line
-        cout << "Time: " << timeStep << " operation: Car paid: ";
-            lane.front().print();
-             lane.pop_front();  
-        } else{
-            
-            Car newCar;
-
-            //car does not pay and joins the back of the line
-            cout << "Time: " << timeStep << " Operation: Joined Lane:  " << (i + 1)<< " ";
-             newCar.print();
-             lane.push_back(newCar);
-        }
-        //prints the current state of the line
-        cout << "Queue:" << endl;
-        if (lane.empty()){
-            cout << "Empty." << endl;
-        }else{
-            for ( Car& c : lane){ //prints each car in the line
-                c.print();
-            }
-        }
-        cout << endl; 
-    }
-    return 0;
 }
-
+return 0;
+}

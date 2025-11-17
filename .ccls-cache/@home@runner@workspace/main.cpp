@@ -21,11 +21,22 @@ int main(){
     //add the fist 2 cars to the line
     for(int i = 0; i < Num_lane; ++i){
         for(int j = 0; j < INITIAL_CARS; ++j){
-        lane.push_back(Car()); //creates a new car and adds it to the back of the line
+        lanes[i].push_back(Car()); //creates a new car and adds it to the back of the line
     }
     }
     //prints the starting line of cars
     cout << "Initial queue:" << endl;
+    for (int i =0; i < Num_lane; ++i){
+        cout << "Lane " << (i + 1) << ":" << endl;
+
+        if (lanes[i].empty()){
+            cout << "Empty." << endl;}
+        else {
+            for (int k = 0; k < (int)lanes[i].size(); ++k){
+                cout << "   ";
+                lanes[i][k].print();
+            }//****I was working on this******
+    }
     if (lane.empty()){
         cout << "Empty." << endl;
     } else {
@@ -37,8 +48,8 @@ int main(){
 
     int timeStep = 0; //keeps track of time steps
 
-    while (!lane.empty()){
-        ++timeStep; //moves to the next time step
+   for(int timeStep =1; timeStep <= 20; ++timeStep ){
+        
 
         int roll = rand () % 100;
 
@@ -54,7 +65,7 @@ int main(){
             Car newCar;
 
             //car does not pay and joins the back of the line
-            cout << "Time: " << timeStep << " Operation: Joined Lane:  ";
+            cout << "Time: " << timeStep << " Operation: Joined Lane:  " << (i + 1)<< " ";
              newCar.print();
              lane.push_back(newCar);
         }

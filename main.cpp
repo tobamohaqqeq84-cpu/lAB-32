@@ -13,6 +13,8 @@ int main(){
     const int INITIAL_CARS = 2; //starts with 2 cars
     const int PAY_PROBABILITY = 55;  //55% chance of paying
     const int Num_lane = 4;
+    const int MAX_TIME_STEPS = 20;
+    const int JOIN_PROB = 15;
 
     srand(time(0));  //makes rendom number
     
@@ -35,7 +37,29 @@ int main(){
             for (int k = 0; k < (int)lanes[i].size(); ++k){
                 cout << "   ";
                 lanes[i][k].print();
-            }//****I was working on this******
+            }
+    }}
+    cout << endl;
+
+    for (int timeStep = 1; timeStep <= MAX_TIME_STEPS; ++timeStep)
+        cout << "Time: " << timeStep << endl;
+    for (int i = 0; i < Num_lane; ++i){
+        cout << "Lane " << (i + 1) << " ";
+        if (lanes[i].empty()){
+            int rollEmpty = rand () % 100;
+
+            if (rollEmpty < JOIN_PROB){
+                Car newCar;
+                cout << "Joined: ";
+                newcomer.print();
+                lanes[i].push_back(newCar);
+            } else {
+                cout
+            }
+            }
+            
+        }
+        
     }
     if (lane.empty()){
         cout << "Empty." << endl;

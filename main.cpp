@@ -19,7 +19,7 @@ int main(){
     deque<Car> lanes[Num_lanes];
 
     //add the fist 2 cars to the line
-    for(int i = 0; i < INITIAL_CARS; ++i){
+    for(int i = 0; i < Num_lanes; ++i){
         lane.push_back(Car()); //creates a new car and adds it to the back of the line
     }
 

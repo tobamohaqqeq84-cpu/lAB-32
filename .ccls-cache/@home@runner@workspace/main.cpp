@@ -12,17 +12,18 @@ using namespace std;
 int main(){
     const int INITIAL_CARS = 2; //starts with 2 cars
     const int PAY_PROBABILITY = 55;  //55% chance of paying
-    const int Num_lanes = 4;
+    const int Num_lane = 4;
 
     srand(time(0));  //makes rendom number
     
-    deque<Car> lanes[Num_lanes];
+    deque<Car> lanes[Num_lane];
 
     //add the fist 2 cars to the line
-    for(int i = 0; i < Num_lanes; ++i){
+    for(int i = 0; i < Num_lane; ++i){
+        for(int j = 0; j < INITIAL_CARS; ++j){
         lane.push_back(Car()); //creates a new car and adds it to the back of the line
     }
-
+    }
     //prints the starting line of cars
     cout << "Initial queue:" << endl;
     if (lane.empty()){
